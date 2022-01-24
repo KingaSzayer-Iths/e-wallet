@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   width: 414px;
   min-height:896px;

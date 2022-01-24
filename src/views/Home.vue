@@ -11,7 +11,10 @@
       <ul>
           <li @click="setActiveCard(myCard.newCardNumber)" 
             v-for="myCard in myBankCards" 
-            :key="myCard.cardNumber">{{myCard}}</li>
+            :key="myCard.cardNumber">
+            <BankCard :cardNumber="myCard.newCardNumber"
+            :vendor="myCard.selected"/>
+          </li>
       </ul>
       <a @click="changeView">Add a new card</a>
   </div>
@@ -47,5 +50,11 @@ h2 {
     text-align: center;
     margin: 0;
     text-transform: uppercase;
+}
+ul {
+    padding: 0px;
+}
+li {
+    list-style: none;
 }
 </style>

@@ -58,11 +58,11 @@ export default {
                 name: 'Bitcoin Inc'
             }, 
             {   
-                id: 'ninjabank',
+                id: 'ninja',
                 name: 'Ninja Bank'
             },
             {
-                id: 'blockchaininc',
+                id: 'blockchain',
                 name: 'Block Chain Inc'
             }, 
             {
