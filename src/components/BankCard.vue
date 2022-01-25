@@ -10,18 +10,21 @@
       </div>
       <img v-if="vendor == 'bitcoin'" class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
       <img v-else-if="vendor == 'ninja'" class="vendor-size" alt="Vendor Logo" src="../assets/ninja.svg" />
+      <img v-else-if="vendor == 'blockchain'" class="vendor-size" alt="Vendor Logo" src="../assets/blockchain.svg" />
+      <img v-else-if="vendor == 'evil'" class="vendor-size" alt="Vendor Logo" src="../assets/evil.svg" />
+      <img v-else class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
     </div>
     
-    <p class="card-number">XXXX XXXX XXXX XXXX{{cardNumber}}</p>
+    <p :class="['card-number', vendor]">XXXX XXXX XXXX XXXX{{cardNumber}}</p>
     
     <div class="card-bottom">
         <div>
-            <p class="card-text">{{cardholderText}}</p>
-             <p class="holder-text">{{cardholderName}}</p>
+            <p :class="['card-text', vendor]">{{cardholderText}}</p>
+             <p :class="['holder-info', vendor]">{{cardholderName}}</p>
         </div>
         <div>
-            <p class="card-text">{{validThruText}}</p>
-            <p class="holder-text">MM/YY{{validThru}}</p>
+            <p :class="['card-text', vendor]">{{validThruText}}</p>
+            <p :class="['holder-info', vendor]">MM/YY{{validThru}}</p>
         </div>
     </div>
       
@@ -63,7 +66,7 @@ div.card {
 div.bitcoin {
     background-color: #FFAE34;
 }
-div.evilcorp {
+div.evil {
     background-color: #F33355;
 }
 div.ninja {
@@ -71,6 +74,16 @@ div.ninja {
 }
 div.blockchain {
     background-color:#8B58F9;
+}
+
+p.bitcoin {
+    color: black;
+}
+
+p.evil,
+p.ninja,
+p.blockchain {
+    color: white
 }
 
 p.card-number { 
@@ -102,9 +115,11 @@ p.card-text {
     font-size: 12px;
     font-family: 'PT Mono', sans-serif;
 }
-p.holder-text {
+p.holder-info {
     font-family: 18px;
     font-family: 'PT Mono', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
 }
 
 img.wifi-size {

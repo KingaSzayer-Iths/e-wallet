@@ -66,7 +66,7 @@ export default {
                 name: 'Block Chain Inc'
             }, 
             {
-                id: 'evilcorp',
+                id: 'evil',
                 name: 'Evil Corp'
             }
         ]
