@@ -15,7 +15,7 @@
       <img v-else class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
     </div>
     
-    <p :class="['card-number', vendor]">XXXX XXXX XXXX XXXX{{cardNumber}}</p>
+    <p :class="['card-number', vendor]">{{formatted}}</p>
     
     <div class="card-bottom">
         <div>
@@ -24,7 +24,7 @@
         </div>
         <div>
             <p :class="['card-text', vendor]">{{validThruText}}</p>
-            <p :class="['holder-info', vendor]">MM/YY{{validThru}}</p>
+            <p :class="['holder-info', vendor]">{{validThru}}</p>
         </div>
     </div>
       
@@ -35,7 +35,6 @@
 export default {
 
     data() { return {
-        vendorLogo: '',
         cardholderText: 'CARDHOLDER NAMN',
         validThruText: 'VALID THRU',
     }},
@@ -45,7 +44,15 @@ export default {
         'validThru',
         'ccv',
         'vendor'
-    ]
+    ],
+    computed : {
+        formatted() {
+            return this.cardNumber.length>0?this.cardNumber.substring(0, 4)+" "+
+                this.cardNumber.substring(4, 8)+" "+
+                this.cardNumber.substring(8, 12)+" "+
+                this.cardNumber.substring(12, 16):'XXXX XXXX XXXX XXXX'
+        }
+    }
 }
 </script>
 

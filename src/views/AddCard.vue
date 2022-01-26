@@ -12,10 +12,12 @@
         :vendor="cardInfo.selected" />
       <div class="add-form">
         <label>CARD NUMBER
-            <input type="text" v-model="cardInfo.newCardNumber">
+            <input type="text" placeholder="XXXX XXXX XXXX XXXX" 
+                v-model="cardInfo.newCardNumber">
         </label>
         <label>CARD HOLDERNAME
-            <input type="text" v-model="cardInfo.newCardholderName" >
+            <input type="text" placeholder="FIRSTNAME LASTNAME" 
+                v-model="cardInfo.newCardholderName" >
         </label>
         <div class="add-form-two-columns">
             <label>VALID THRU

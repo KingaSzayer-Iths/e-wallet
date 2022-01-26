@@ -1,25 +1,29 @@
 <template>
   <div class="home-view">
-      <div>
       <Header headerText="E-WALLET"/>
-      <h2>Active Card</h2>
+      <div class="my-cards">
+        <div>
+            <h2>Active Card</h2>
+            <BankCard v-if="activeCard != ''"
+                :cardNumber="activeCard.newCardNumber" 
+                :cardholderName="activeCard.newCardholderName" 
+                :validThru="activeCard.newValidThru"
+                :ccv="activeCard.ccv"
+                :vendor="activeCard.selected"/>
+        </div>
+        <ul class="cards-position">
+            <li @click="setActiveCard(myCard.newCardNumber)" 
+                v-for="myCard in myBankCards" 
+                :key="myCard.cardNumber"
+                class="card-position">
+                <BankCard  
+                    :cardNumber="myCard.newCardNumber"
+                    :cardholderName="myCard.newCardholderName" 
+                    :validThru="myCard.newValidThru"
+                    :vendor="myCard.selected"/>
+            </li>
+        </ul>
       </div>
-      <BankCard v-if="activeCard != ''"
-        :cardNumber="activeCard.newCardNumber" 
-        :cardholderName="activeCard.newCardholderName" 
-        :validThru="activeCard.newValidThru"
-        :ccv="activeCard.ccv"
-        :vendor="activeCard.selected"/>
-      <ul>
-          <li @click="setActiveCard(myCard.newCardNumber)" 
-            v-for="myCard in myBankCards" 
-            :key="myCard.cardNumber"
-            :class="['card-position',activeCard.newCardNumber==myCard.newCardNumber ? 'hide' : '']">
-            <BankCard  
-                :cardNumber="myCard.newCardNumber"
-                :vendor="myCard.selected"/>
-          </li>
-      </ul>
       <button @click="changeView">Add a new card</button>
   </div>
 </template>
@@ -48,6 +52,38 @@ export default {
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+li:nth-child(4) {
+    bottom: 0px;
+}
+li:nth-child(3) {
+    bottom: 40px;
+}
+li:nth-child(2) {
+    bottom: 80px;
+}
+li:nth-child(1) {
+    bottom: 120px;
+} 
+/* li:nth-child(1) {
+    transform: translateY(0px);
+}
+li:nth-child(2) {
+    transform: translateY(-60px);
+}
+li:nth-child(3) {
+    transform: translateY(-120px);
+}
+li:nth-child(4) {
+    transform: translateY(-180px);
+}  */
+div.my-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
 div.home-view {
     display: flex;
     flex-direction: column;
@@ -55,15 +91,17 @@ div.home-view {
     min-height: 896px;
 }
 li.card-position {
-    /* position: absolute;*/
+    position: absolute;
 }
-li.hide {
-    display: none;
+ul.cards-position {
+    position: relative;
+    bottom: 0px;
 }
 h2 {
     color: grey;
     font-size: 12px;
     text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     text-transform: uppercase;
 }
