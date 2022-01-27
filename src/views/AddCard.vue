@@ -13,18 +13,24 @@
       <div class="add-form">
         <label>CARD NUMBER
             <input type="text" placeholder="XXXX XXXX XXXX XXXX" 
-                v-model="cardInfo.newCardNumber">
+                v-model="cardInfo.newCardNumber"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                maxlength="16">
         </label>
         <label>CARD HOLDERNAME
             <input type="text" placeholder="FIRSTNAME LASTNAME" 
-                v-model="cardInfo.newCardholderName" >
+                v-model="cardInfo.newCardholderName" 
+                onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode == 32 || (event.charCode >=224 && event.charCode <= 246) || (event.charCode >=192 && event.charCode <= 214)"
+                maxlength="25">
         </label>
         <div class="add-form-two-columns">
             <label>VALID THRU
                 <input class="small-input" type="text" placeholder="MM/YY" v-model="cardInfo.newValidThru"> 
             </label>
             <label>CCV
-                <input class="small-input" type="text" v-model="cardInfo.ccv">
+                <input class="small-input" type="text" v-model="cardInfo.ccv"
+                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                maxlength="3">
             </label>
         </div>
         <label>VENDOR
@@ -109,6 +115,7 @@ input.small-input {
 div.add-form {
     display: grid;
     grid-template-columns: 1fr;
+    margin: 32px 0px;
 }
 
 div.add-form-two-columns {

@@ -24,7 +24,10 @@ export default {
     },
     addNewCardToMyCards(newCardInfo) {
       this.currentView = 'home'
-      this.bankCards.push(newCardInfo)
+
+      if (this.bankCards.length < 4) {
+        this.bankCards.push(newCardInfo)
+      }
     }
   }
 

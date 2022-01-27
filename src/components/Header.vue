@@ -16,7 +16,7 @@ h1 {
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
     margin: 0;
-    padding: 40px 64px;
+    padding: 30px 44px;
     font-size: 35px;
     font-weight: bold;
 }

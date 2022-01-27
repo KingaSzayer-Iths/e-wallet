@@ -12,7 +12,7 @@
       <img v-else-if="vendor == 'ninja'" class="vendor-size" alt="Vendor Logo" src="../assets/ninja.svg" />
       <img v-else-if="vendor == 'blockchain'" class="vendor-size" alt="Vendor Logo" src="../assets/blockchain.svg" />
       <img v-else-if="vendor == 'evil'" class="vendor-size" alt="Vendor Logo" src="../assets/evil.svg" />
-      <img v-else class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
+      <img v-else class="no-vendor-size" alt="Vendor Logo" src="../assets/bitcoin_grey.svg" />
     </div>
     
     <p :class="['card-number', vendor]">{{formatted}}</p>
@@ -24,7 +24,7 @@
         </div>
         <div>
             <p :class="['card-text', vendor]">{{validThruText}}</p>
-            <p :class="['holder-info', vendor]">{{validThru}}</p>
+            <p :class="['holder-info', vendor]">{{formattedThru}}</p>
         </div>
     </div>
       
@@ -51,6 +51,9 @@ export default {
                 this.cardNumber.substring(4, 8)+" "+
                 this.cardNumber.substring(8, 12)+" "+
                 this.cardNumber.substring(12, 16):'XXXX XXXX XXXX XXXX'
+        },
+        formattedThru() {
+            return this.validThru.length>0?this.validThru:'MM/YY'
         }
     }
 }
@@ -66,7 +69,7 @@ div.card {
     width: 382px;
     filter: drop-shadow(0px 0px 32px rgba(0, 0, 0, 0.1));
     background-color: #D0D0D0;
-    margin: 16px;
+    margin: 0px 16px;
     border-radius: 8px;
 }
 
@@ -137,6 +140,10 @@ img.chip-size {
 }
 img.vendor-size {
     width: 64px;
+}
+img.no-vendor-size {
+    width: 27px;
+    margin: 12px 16px;
 }
 
 </style>

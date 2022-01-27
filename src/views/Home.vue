@@ -66,18 +66,6 @@ li:nth-child(2) {
 li:nth-child(1) {
     bottom: 120px;
 } 
-/* li:nth-child(1) {
-    transform: translateY(0px);
-}
-li:nth-child(2) {
-    transform: translateY(-60px);
-}
-li:nth-child(3) {
-    transform: translateY(-120px);
-}
-li:nth-child(4) {
-    transform: translateY(-180px);
-}  */
 div.my-cards {
     display: flex;
     flex-direction: column;
@@ -104,6 +92,7 @@ h2 {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     text-transform: uppercase;
+    margin: 0px 0px 8px 0px;
 }
 ul {
     padding: 0px;
