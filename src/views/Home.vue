@@ -14,7 +14,7 @@
         <ul class="cards-position">
             <li @click="setActiveCard(myCard.newCardNumber)" 
                 v-for="myCard in myBankCards" 
-                :key="myCard.cardNumber"
+                :key="myCard.newCardNumber"
                 class="card-position">
                 <BankCard  
                     :cardNumber="myCard.newCardNumber"

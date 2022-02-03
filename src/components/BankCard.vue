@@ -3,16 +3,22 @@
 
     <div class="card-top">
       <div class="card-top-left">
-        <img v-if="vendor == 'bitcoin'" class="wifi-size" src="../assets/wifi.svg" alt="Wifi">
+         
+        <img class="wifi-size" :src="wifiPath" alt="">
+        <!-- <img v-if="vendor == 'bitcoin'" class="wifi-size" src="../assets/wifi.svg" alt="Wifi">
         <img v-else-if="vendor == ''" class="wifi-size" src="../assets/wifi.svg" alt="Wifi">
-        <img v-else class="wifi-size" src="../assets/wifi_white.svg" alt="Wifi">
+        <img v-else class="wifi-size" src="../assets/wifi_white.svg" alt="Wifi"> -->
+
         <img class="chip-size" src="../assets/chip.svg" alt="Chip" />
       </div>
-      <img v-if="vendor == 'bitcoin'" class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
+      
+      <img :class="imageSize" :src="imagePath" alt="">
+
+      <!-- <img v-if="vendor == 'bitcoin'" class="vendor-size" alt="Vendor Logo" src="../assets/bitcoin.svg" />
       <img v-else-if="vendor == 'ninja'" class="vendor-size" alt="Vendor Logo" src="../assets/ninja.svg" />
       <img v-else-if="vendor == 'blockchain'" class="vendor-size" alt="Vendor Logo" src="../assets/blockchain.svg" />
       <img v-else-if="vendor == 'evil'" class="vendor-size" alt="Vendor Logo" src="../assets/evil.svg" />
-      <img v-else class="no-vendor-size" alt="Vendor Logo" src="../assets/bitcoin_grey.svg" />
+      <img v-else class="no-vendor-size" alt="Vendor Logo" src="../assets/bitcoin_grey.svg" /> -->
     </div>
     
     <p :class="['card-number', vendor]">{{formatted}}</p>
@@ -54,6 +60,21 @@ export default {
         },
         formattedThru() {
             return this.validThru.length>0?this.validThru:'MM/YY'
+        },
+        imagePath() {
+            //if (this.vendor == '')
+              //  return require('../assets/bitcoin_grey.svg')
+            //return require('../assets/'+this.vendor+'.svg')
+            return this.vendor == '' ? require('../assets/bitcoin_grey.svg') : require('../assets/'+this.vendor+'.svg')
+        },
+        imageSize() {
+            //if (this.vendor == '')
+              //  return 'no-vendor-size'
+            //return 'vendor-size'
+            return this.vendor == '' ? 'no-vendor-size' : 'vendor-size'
+        },
+        wifiPath() {
+             return this.vendor == '' || this.vendor == 'bitcoin' ? require('../assets/wifi.svg') : require('../assets/wifi_white.svg')
         }
     }
 }
